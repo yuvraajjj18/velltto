@@ -1,0 +1,484 @@
+<div id="veltoApp">
+
+  <!-- SETUP -->
+  <section id="setupScreen" class="setup-screen">
+    <div class="logo-3d setup-logo">V</div>
+    <h1>VELTO</h1>
+    <p class="subtitle">Your personal academic command center.</p>
+
+    <div class="setup-card">
+      <h2>Initialize your workspace</h2>
+
+      <label>Board</label>
+      <div id="boardOptions" class="choice-grid">
+        <button class="choice-btn" data-value="CBSE">CBSE</button>
+        <button class="choice-btn" data-value="ICSE">ICSE</button>
+        <button class="choice-btn" data-value="State Board">State Board</button>
+        <button class="choice-btn" data-value="Other">Other</button>
+      </div>
+
+      <label>Class</label>
+      <div id="classOptions" class="choice-grid">
+        <button class="choice-btn" data-value="9">9</button>
+        <button class="choice-btn" data-value="10">10</button>
+        <button class="choice-btn" data-value="11">11</button>
+        <button class="choice-btn" data-value="12">12</button>
+      </div>
+
+      <div id="streamSection" style="display:none">
+        <label>Stream</label>
+        <div id="streamOptions" class="choice-grid">
+          <button class="choice-btn" data-value="PCM">PCM</button>
+          <button class="choice-btn" data-value="PCB">PCB</button>
+          <button class="choice-btn" data-value="PCMB">PCMB</button>
+          <button class="choice-btn" data-value="Commerce">Commerce</button>
+          <button class="choice-btn" data-value="Humanities">Humanities</button>
+        </div>
+      </div>
+
+      <label>Target</label>
+      <div id="examOptions" class="choice-grid">
+        <button class="choice-btn" data-value="Boards">Boards</button>
+        <button class="choice-btn" data-value="JEE">JEE</button>
+        <button class="choice-btn" data-value="NEET">NEET</button>
+        <button class="choice-btn" data-value="CUET">CUET</button>
+        <button class="choice-btn" data-value="Other">Other</button>
+      </div>
+
+      <button id="finishSetup" class="primary-btn">ENTER VELTO ↗</button>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <div id="appShell" style="display:none">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+      <div class="brand">
+        <div class="logo-3d small-logo">V</div>
+        <div>
+          <h2>VELTO</h2>
+          <span>STUDENT SYSTEM</span>
+        </div>
+      </div>
+
+      <div class="profile-mini">
+        <div class="profile-orb">V</div>
+        <div>
+          <strong id="profileClass">Class</strong>
+          <p id="profileBoard">Board</p>
+          <p id="profileStream"></p>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <p class="nav-label">WORKSPACE</p>
+        <button data-page="overview" class="nav-btn active">◈ Overview</button>
+        <button data-page="planner" class="nav-btn">▤ Planner</button>
+        <button data-page="backlog" class="nav-btn">▦ Backlog Matrix</button>
+        <button data-page="syllabus" class="nav-btn">▧ Chapter Library</button>
+        <button data-page="calendar" class="nav-btn">◷ Calendar</button>
+
+        <p class="nav-label">PERSONAL</p>
+        <button data-page="trackers" class="nav-btn">◉ Trackers</button>
+        <button data-page="goals" class="nav-btn">◎ Goals</button>
+        <button data-page="errors" class="nav-btn">⌁ Error Vault</button>
+        <button data-page="focus" class="nav-btn">◷ Focus</button>
+
+        <p class="nav-label">TOOLS</p>
+        <button data-page="teachers" class="nav-btn">▣ Teacher Hub</button>
+        <button data-page="jarvis" class="nav-btn">✳ JARVIS</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button id="themeToggle" class="nav-btn">◐ Theme</button>
+        <div class="sidebar-footer">VELTO SYSTEMS • V1</div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+      <header class="topbar">
+        <button id="menuToggle" class="icon-btn">☰</button>
+        <div>
+          <span class="eyebrow">ACADEMIC COMMAND CENTER</span>
+          <h2 id="pageHeading">Overview</h2>
+        </div>
+        <div class="topbar-right">
+          <span class="live-indicator">● SYSTEM ONLINE</span>
+        </div>
+      </header>
+
+      <!-- OVERVIEW -->
+      <section id="overview" class="page-section active">
+
+        <div class="hero-card glass-card">
+          <div class="hero-content">
+            <span class="eyebrow">WELCOME TO VELTO</span>
+            <h1>Make every<br>session <span>count.</span></h1>
+            <p>Your tasks, chapters and progress. One system.</p>
+            <button data-page="planner" class="primary-btn">Open Planner ↗</button>
+          </div>
+          <div class="hero-3d">
+            <div class="logo-3d hero-logo">V</div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card glass-card">
+            <span>TOTAL TASKS</span>
+            <h2 id="totalTasks">0</h2>
+          </div>
+          <div class="stat-card glass-card">
+            <span>COMPLETED</span>
+            <h2 id="completedTasks">0</h2>
+          </div>
+          <div class="stat-card glass-card">
+            <span>PROGRESS</span>
+            <h2 id="taskProgress">0%</h2>
+          </div>
+          <div class="stat-card glass-card">
+            <span>CHAPTERS</span>
+            <h2 id="overviewChapters">0</h2>
+          </div>
+        </div>
+
+        <div class="panel-grid">
+          <div class="panel glass-card">
+            <div class="panel-heading">
+              <h3>Today's Tasks</h3>
+              <button data-page="planner" class="text-btn">View all ↗</button>
+            </div>
+            <div id="overviewTasks"></div>
+          </div>
+
+          <div class="panel glass-card">
+            <div class="panel-heading">
+              <h3>Chapter Progress</h3>
+              <button data-page="syllabus" class="text-btn">Library ↗</button>
+            </div>
+            <div id="overviewChapterProgress"></div>
+          </div>
+        </div>
+
+        <div class="panel glass-card">
+          <div class="panel-heading">
+            <h3>System Quick Access</h3>
+          </div>
+          <div class="quick-grid">
+            <button data-page="backlog">Backlog Matrix ↗</button>
+            <button data-page="focus">Focus Session ↗</button>
+            <button data-page="errors">Error Vault ↗</button>
+            <button data-page="jarvis">JARVIS ↗</button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- PLANNER -->
+      <section id="planner" class="page-section">
+
+        <div class="panel glass-card">
+          <div class="panel-heading">
+            <h3>Task Creator</h3>
+          </div>
+
+          <div class="input-grid">
+            <input id="taskInput" placeholder="What needs to be done?">
+            <input id="subjectInput" placeholder="Subject">
+            <input id="dateInput" type="date">
+            <select id="priorityInput">
+              <option value="Medium">Medium Priority</option>
+              <option value="High">High Priority</option>
+              <option value="Low">Low Priority</option>
+            </select>
+          </div>
+
+          <button id="addTaskButton" class="primary-btn">+ ADD TASK</button>
+        </div>
+
+        <div class="panel glass-card">
+          <div class="panel-heading">
+            <h3>Tasks</h3>
+          </div>
+          <div id="taskList"></div>
+        </div>
+
+      </section>
+
+      <!-- BACKLOG MATRIX -->
+      <section id="backlog" class="page-section">
+
+        <div class="backlog-hero glass-card">
+          <span class="eyebrow">CHAPTER EXECUTION MATRIX</span>
+          <h1>Backlog <span>Matrix.</span></h1>
+          <p>Select chapters already loaded for your class. Track lectures, notes, DPP, practice and tests chapter-wise.</p>
+        </div>
+
+        <div class="panel glass-card">
+          <div class="panel-heading">
+            <h3>Chapter Matrix</h3>
+          </div>
+
+          <div class="input-grid">
+            <select id="backlogSubjectFilter">
+              <option value="all">All Subjects</option>
+            </select>
+            <select id="backlogStatusFilter">
+              <option value="all">All Chapters</option>
+              <option value="pending">Pending</option>
+              <option value="progress">In Progress</option>
+              <option value="done">Completed</option>
+            </select>
+          </div>
+
+          <div class="matrix-summary" id="backlogSummary"></div>
+
+          <div class="table-wrap">
+            <table id="backlogTable">
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Chapter</th>
+                  <th>Lecture</th>
+                  <th>Notes</th>
+                  <th>Practice</th>
+                  <th>DPP</th>
+                  <th>Test</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="backlogTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- CHAPTER LIBRARY -->
+      <section id="syllabus" class="page-section">
+
+        <div class="library-hero glass-card">
+          <span class="eyebrow">SYLLABUS DATABASE</span>
+          <h1>Chapter <span>Library.</span></h1>
+          <p>Choose a subject and chapter from your preloaded syllabus.</p>
+        </div>
+
+        <div class="panel glass-card">
+          <div class="panel-heading">
+            <h3>Chapter Selector</h3>
+          </div>
+
+          <div class="input-grid">
+            <select id="syllabusSubject">
+              <option value="">Select subject</option>
+            </select>
+
+            <select id="syllabusChapter">
+              <option value="">Select chapter</option>
+            </select>
+          </div>
+
+          <button id="addSyllabusChapter" class="primary-btn">+ ADD CHAPTER</button>
+        </div>
+
+        <div class="panel glass-card">
+          <div class="panel-heading">
+            <h3>Your Library</h3>
+            <span id="syllabusProgress">0%</span>
+          </div>
+
+          <div class="progress-track">
+            <div id="syllabusProgressBar" class="progress-fill"></div>
+          </div>
+
+          <div id="syllabusChapterList"></div>
+        </div>
+
+      </section>
+
+      <!-- CALENDAR -->
+      <section id="calendar" class="page-section">
+        <div class="panel glass-card">
+          <div class="panel-heading">
+            <h3>Academic Calendar</h3>
+          </div>
+          <div id="calendarList"></div>
+        </div>
+      </section>
+
+      <!-- TRACKERS -->
+      <section id="trackers" class="page-section">
+
+        <div class="panel glass-card">
+          <div class="panel-heading">
+            <h3>Habit Creator</h3>
+          </div>
+          <div class="input-grid">
+            <input id="habitInput" placeholder="Add a habit">
+            <button id="addHabit" class="primary-btn">ADD</button>
+          </div>
+          <div id="habitList"></div>
+        </div>
+
+      </section>
+
+      <!-- GOALS -->
+      <section id="goals" class="page-section">
+
+        <div class="panel glass-card">
+          <div class="panel-heading">
+            <h3>Goals</h3>
+          </div>
+          <div class="input-grid">
+            <input id="goalInput" placeholder="Add a goal">
+            <button id="addGoal" class="primary-btn">ADD</button>
+          </div>
+          <div id="goalList"></div>
+        </div>
+
+      </section>
+
+      <!-- ERRORS -->
+      <section id="errors" class="page-section">
+
+        <div class="panel glass-card">
+          <div class="panel-heading">
+            <h3>Error Vault</h3>
+          </div>
+          <div class="input-grid">
+            <input id="errorInput" placeholder="Record a mistake">
+            <button id="addError" class="primary-btn">SAVE</button>
+          </div>
+          <div id="errorList"></div>
+        </div>
+
+      </section>
+
+      <!-- FOCUS -->
+      <section id="focus" class="page-section">
+
+        <div class="focus-card glass-card">
+          <span class="eyebrow">DEEP WORK MODE</span>
+          <h1>FOCUS</h1>
+          <div id="focusTimer" class="timer-display">25:00</div>
+
+          <div class="timer-actions">
+            <button id="startFocus" class="primary-btn">START</button>
+            <button id="pauseFocus" class="secondary-btn">PAUSE</button>
+            <button id="resetFocus" class="secondary-btn">RESET</button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- TEACHERS -->
+      <section id="teachers" class="page-section">
+
+        <div class="panel glass-card">
+          <div class="panel-heading">
+            <h3>Teacher Hub</h3>
+          </div>
+
+          <div class="teacher-tabs">
+            <button class="teacher-filter active" data-teacher-group="class10">Class 10</button>
+            <button class="teacher-filter" data-teacher-group="school">11–12</button>
+            <button class="teacher-filter" data-teacher-group="jee">JEE</button>
+            <button class="teacher-filter" data-teacher-group="neet">NEET</button>
+          </div>
+
+          <div class="teacher-group" data-group="class10">
+            <div class="teacher-card">Biology — Samriddhi Ma'am</div>
+            <div class="teacher-card">Physics — Rakshak Sir</div>
+            <div class="teacher-card">Chemistry — Prashant Kirad Sir</div>
+            <div class="teacher-card">Science — Prashant Kirad Sir</div>
+            <div class="teacher-card">SST — Digraj Singh Rajput Sir</div>
+            <div class="teacher-card">English — Mongolia Ma'am</div>
+            <div class="teacher-card">Maths — Ritik Sir</div>
+            <div class="teacher-card">Hindi — Umesh Parmar Sir / Aditi Ma'am</div>
+          </div>
+
+          <div class="teacher-group" data-group="school" style="display:none">
+            <div class="teacher-card">Physics — Rakshak Sir</div>
+            <div class="teacher-card">Chemistry — Tapur Ma'am / Akash Tyagi Sir</div>
+            <div class="teacher-card">Maths — Ritik Sir</div>
+            <div class="teacher-card">Additional — Anurag Sir</div>
+            <div class="teacher-card">Additional — Aditi Ma'am</div>
+            <div class="teacher-card">Additional — Aarushi Ma'am / Samriddhi Ma'am</div>
+          </div>
+
+          <div class="teacher-group" data-group="jee" style="display:none">
+            <div class="teacher-card">Physics — Rahul Yadav Sir</div>
+            <div class="teacher-card">Maths — Arvind Kalia Sir / Sachin Jakhar Sir</div>
+            <div class="teacher-card">Physical Chemistry — Faisal Razaq Sir / Rahul Dudi Sir</div>
+            <div class="teacher-card">Organic Chemistry — Rohit Agarwal Sir</div>
+            <div class="teacher-card">Inorganic Chemistry — Om Prakash Pandey Sir / Rahul Dudi Sir</div>
+          </div>
+
+          <div class="teacher-group" data-group="neet" style="display:none">
+            <div class="teacher-card">Biology — Vipin Sir / Samapti Ma'am / Seep Pahuja Ma'am</div>
+            <div class="teacher-card">Physics — Manish Raj Sir</div>
+            <div class="teacher-card">Physical Chemistry — Sudhanshu Sir</div>
+            <div class="teacher-card">Organic Chemistry — Pankaj Sir</div>
+            <div class="teacher-card">Inorganic Chemistry — Om Pandey Sir / Mohit Dadheech Sir</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- JARVIS -->
+      <section id="jarvis" class="page-section">
+
+        <div class="jarvis-shell glass-card">
+
+          <div class="jarvis-header">
+            <div class="jarvis-orb-wrap">
+              <div class="jarvis-orb">
+                <div class="jarvis-orb-inner">V</div>
+              </div>
+            </div>
+
+            <div>
+              <span class="eyebrow">VELTO INTELLIGENCE</span>
+              <h1>JARVIS</h1>
+              <p class="live-indicator">● ONLINE INTERFACE</p>
+            </div>
+          </div>
+
+          <div id="jarvisMessages" class="jarvis-messages">
+            <div class="jarvis-message bot-message">
+              System ready. I can help organize your study workflow.
+            </div>
+          </div>
+
+          <div class="jarvis-input-area">
+            <input id="jarvisInput" placeholder="Ask JARVIS...">
+            <button id="jarvisSend" class="primary-btn">SEND ↗</button>
+          </div>
+
+          <p class="jarvis-disclaimer">
+            Interface demonstration. Live AI requires an external AI connection.
+          </p>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- EDIT MODAL -->
+  <div id="editModal" class="modal" style="display:none">
+    <div class="modal-content glass-card">
+      <h3>Edit Task</h3>
+      <input id="editTaskTitle" placeholder="Task title">
+      <div class="modal-actions">
+        <button id="cancelEdit" class="secondary-btn">CANCEL</button>
+        <button id="saveEdit" class="primary-btn">SAVE</button>
+      </div>
+    </div>
+  </div>
+
+</div>
