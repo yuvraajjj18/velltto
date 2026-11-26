@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: velto-web
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/auth/me
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: MONGODB_DB
+        value: velto
+      - key: SESSION_SECRET
+        generateValue: true
